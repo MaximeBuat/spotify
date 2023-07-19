@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spotify</string>
+    <string name="hello_blank_fragment">salut fragment vide</string>
+    <string name="bottom_nav_search">Recherche</string>
+    <string name="bottom_nav_rank">Classements</string>
+</resources>
