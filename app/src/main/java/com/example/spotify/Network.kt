@@ -1,3 +1,7 @@
+package com.example.spotify
+
+import AlbumList
+import ServerResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
@@ -5,24 +9,26 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface FoodAPI {
-    @GET("getProduct")
+interface AudioAPI {
+    @GET("trending.php")
     fun getResponse(
-        @Query("barcode") response: String,
-    ): Deferred<ServerResponse>
+        @Query("country") response: String,
+        @Query("type") response2: String,
+        @Query("format") response3: String,
+    ): Deferred<AlbumList>
 }
 
 object NetworkManager {
 
     private val api = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl("https://theaudiodb.com/api/v1/json/523532/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
-        .create(FoodAPI::class.java)
+        .create(AudioAPI::class.java)
 
-    fun getProduct(barcode: String): Deferred<ServerResponse> {
-        return api.getResponse(barcode)
+    fun getRanking(country: String, type: String, format: String): Deferred<AlbumList> {
+        return api.getResponse(country, type, format)
     }
 
 }
