@@ -1,3 +1,5 @@
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -6,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.spotify.R
+import kotlin.math.log
 
 class MyTrendingAlbumsAdapter(
     val callback: OnTrendingAlbumListClickListener
@@ -14,6 +17,7 @@ class MyTrendingAlbumsAdapter(
     private val data = mutableListOf<Album>()
 
     fun setData(trendingAlbum: List<Album>) {
+        Log.d(TAG, "setData: sfknrdg,lksr")
         data.clear()
         data.addAll(trendingAlbum)
         notifyDataSetChanged()
@@ -33,7 +37,6 @@ class MyTrendingAlbumsAdapter(
     override fun onBindViewHolder(holder: TrendingAlbumListViewHolder, position: Int) {
         val trendingAlbum = data[position]
         holder.update(trendingAlbum)
-        //holder.thumbnail.setImageResource(trendingAlbum.strTrackThumb)
         holder.artist.text = trendingAlbum.strArtist
         holder.album.text = trendingAlbum.strAlbum
         holder.itemView.setOnClickListener {

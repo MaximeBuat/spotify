@@ -7,7 +7,7 @@ data class Album(
     val idArtist: String,
     val IntChartPlace: Int,
     val strAlbum: String,
-    val strAlbumThumb: Uri,
+    val strAlbumThumb: String,
     val strArtist: String,
 )
 

@@ -2,6 +2,7 @@ package com.example.spotify
 
 import Album
 import MyTrendingAlbumsAdapter
+import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -69,7 +70,9 @@ class RankFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.Main) {
             try {
+                Log.d(TAG, "onViewCreated: On view created")
                 val response = NetworkManager.getRanking("us", "itunes","albums").await()
+                Log.d(TAG, "onViewCreated: ${response}")
                 albumTrendingTrackAdapter.setData(response.trending)
             } catch (e: Exception) {
                 // Gérer les erreurs ici, par exemple afficher un message d'erreur.

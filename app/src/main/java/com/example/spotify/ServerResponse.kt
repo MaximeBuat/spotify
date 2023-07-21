@@ -18,7 +18,7 @@ data class ServerResponse(
         @SerializedName("strAlbum")
         val strAlbum: String,
         @SerializedName("strAlbumThumb")
-        val strAlbumThumb: Uri,
+        val strAlbumThumb: String,
         @SerializedName("strArtist")
         val strArtist: String,
     )
